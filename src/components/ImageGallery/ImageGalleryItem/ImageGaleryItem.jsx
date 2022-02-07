@@ -1,5 +1,5 @@
 const ImageGaleryItem = () => {
-    return (  );
-}
- 
+  return null;
+};
+
 export default ImageGaleryItem;
