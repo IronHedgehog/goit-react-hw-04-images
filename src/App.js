@@ -5,6 +5,7 @@ import SearchBar from './components/Searchbar/SearchBar';
 import { getImg } from './API/AxiosApiSearch';
 import ImageGallery from './components/ImageGallery/ImageGalery';
 import Button from './components/Button/Button';
+import Modal from './components/Modal/Modal';
 
 class App extends PureComponent {
   state = {
@@ -13,13 +14,9 @@ class App extends PureComponent {
     err: null,
     loader: false,
     page: 1,
+    modal: false,
+    bigImgUrl: '',
   };
-
-  componentDidMount() {
-    getImg()
-      .then(img => this.setState({ img }))
-      .catch(err => this.setState({ err: err.message }));
-  }
 
   componentDidUpdate(prevProps, prevState) {
     if (
@@ -35,7 +32,7 @@ class App extends PureComponent {
     getImg(this.state.inputValue, this.state.page)
       .then(img => this.setState(prev => ({ img: [...prev.img, ...img] })))
       .catch(err => this.setState({ err: err.message }))
-      .finally(this.setState({ loader: false }));
+      .finally(() => this.setState({ loader: false }));
   };
 
   InputValue = inputValue => {
@@ -47,22 +44,31 @@ class App extends PureComponent {
     this.setState(prev => ({ page: prev.page + 1 }));
   };
 
+  toggleModal = () => {
+    this.setState(({ modal }) => ({
+      modal: !modal,
+    }));
+  };
+
+  bigImgForModal = bigImgUrl => {
+    this.setState({ bigImgUrl });
+    this.toggleModal();
+  };
+
   render() {
-    const { InputValue, loadButton } = this;
-    const { inputValue, img, loader, err } = this.state;
+    const { InputValue, loadButton, toggleModal, bigImgForModal } = this;
+    const { img, loader, err, modal, bigImgUrl } = this.state;
     return (
       <>
+        {modal && <Modal closeModal={toggleModal} bigImageUrl={bigImgUrl} />}
         <SearchBar InputValue={InputValue} />
         {err ? (
           <p>{err}</p>
         ) : (
           <>
-            <ImageGallery img={img} />
-            {loader ? (
-              <Audio color="red" height={80} width={80} />
-            ) : (
-              <Button onClickOnLoadMoreButton={loadButton} />
-            )}
+            <ImageGallery img={img} bigImageForModal={bigImgForModal} />
+            {loader && <Audio color="red" height={80} width={80} />}
+            {img.length ? <Button onClickOnLoadMoreButton={loadButton} /> : ''}
           </>
         )}
       </>

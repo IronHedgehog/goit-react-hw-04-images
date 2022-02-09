@@ -9,7 +9,7 @@ const params = ({ q, page }) =>
     key: '25303063-e3dfa67f3227afe1b77421770',
     image_type: 'photo',
     orientation: 'horizontal',
-    per_page: 12,
+    per_page: 15,
   });
 
 export const getImg = async (q = 'Summer', page = 1) => {

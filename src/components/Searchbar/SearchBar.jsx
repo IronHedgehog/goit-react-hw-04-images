@@ -1,4 +1,5 @@
 import { PureComponent } from 'react/cjs/react.production.min';
+import { ImSearch } from 'react-icons/im';
 import s from './searchBar.module.css';
 
 class SearchBar extends PureComponent {
@@ -29,6 +30,9 @@ class SearchBar extends PureComponent {
             type="submit"
             className={s['SearchForm-button']}
           >
+            <ImSearch
+              style={{ marginRight: 3, marginTop: 7, width: 23, height: 23 }}
+            />
             <span className={s['SearchForm-button-label']}>Search</span>
           </button>
 
