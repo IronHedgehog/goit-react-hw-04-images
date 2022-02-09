@@ -23,7 +23,6 @@ class App extends PureComponent {
   }
 
   componentDidUpdate(prevProps, prevState, snapshot) {
-    console.log(snapshot);
     if (prevState.img !== this.state.img) {
       window.scrollTo({
         top: snapshot - 180,

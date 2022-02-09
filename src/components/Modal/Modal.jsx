@@ -30,7 +30,6 @@ class Modal extends Component {
       <div className={s['Overlay']} onClick={closeOnBackdropClick}>
         <div className={s['modal']}>
           <img src={this.props.bigImageUrl} alt="" />
-          {this.props.children}
         </div>
       </div>,
       modalRoot,
