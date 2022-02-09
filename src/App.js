@@ -39,7 +39,7 @@ class App extends PureComponent {
   };
 
   InputValue = inputValue => {
-    this.setState({ page: 1, img: [] });
+    this.setState({ page: 1, img: [], err: null });
     this.setState({ inputValue });
   };
 
@@ -59,9 +59,9 @@ class App extends PureComponent {
           <>
             <ImageGallery img={img} />
             {loader ? (
-              <Audio color="#00BFFF" height={80} width={80} />
+              <Audio color="red" height={80} width={80} />
             ) : (
-              inputValue && <Button onClickOnLoadMoreButton={loadButton} />
+              <Button onClickOnLoadMoreButton={loadButton} />
             )}
           </>
         )}

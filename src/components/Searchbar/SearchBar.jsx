@@ -1,4 +1,5 @@
 import { PureComponent } from 'react/cjs/react.production.min';
+import s from './searchBar.module.css';
 
 class SearchBar extends PureComponent {
   state = {
@@ -21,18 +22,18 @@ class SearchBar extends PureComponent {
     const { onInputChange, onSubmitEvent } = this;
     const { inputValue } = this.state;
     return (
-      <header className="searchbar">
-        <form className="form" onSubmit={onSubmitEvent}>
+      <header className={s['Searchbar']}>
+        <form className={s['SearchForm']} onSubmit={onSubmitEvent}>
           <button
             disabled={this.state.inputValue.trim() === ''}
             type="submit"
-            className="button"
+            className={s['SearchForm-button']}
           >
-            <span className="button-label">Search</span>
+            <span className={s['SearchForm-button-label']}>Search</span>
           </button>
 
           <input
-            className="input"
+            className={s['SearchForm-input']}
             type="text"
             name="inputValue"
             value={inputValue}

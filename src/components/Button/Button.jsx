@@ -1,5 +1,11 @@
+import s from './Button.module.css';
+
 const Button = ({ onClickOnLoadMoreButton }) => {
-  return <button onClick={onClickOnLoadMoreButton}>Load more</button>;
+  return (
+    <button className={s['Button']} onClick={onClickOnLoadMoreButton}>
+      Load more
+    </button>
+  );
 };
 
 export default Button;

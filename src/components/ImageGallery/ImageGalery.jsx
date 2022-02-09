@@ -1,8 +1,8 @@
-import ImageGalleryItem from './ImageGalleryItem/ImageGaleryItem';
-
+import ImageGalleryItem from '../ImageGalleryItem/ImageGaleryItem';
+import s from './imageGalery.module.css';
 const ImageGallery = ({ img }) => {
   return (
-    <ul>
+    <ul className={s['ImageGallery']}>
       {img.map(item => (
         <ImageGalleryItem img={item} key={item.id} />
       ))}
