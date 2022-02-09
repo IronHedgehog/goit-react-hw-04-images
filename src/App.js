@@ -18,7 +18,19 @@ class App extends PureComponent {
     bigImgUrl: '',
   };
 
-  componentDidUpdate(prevProps, prevState) {
+  getSnapshotBeforeUpdate() {
+    return document.body.scrollHeight;
+  }
+
+  componentDidUpdate(prevProps, prevState, snapshot) {
+    console.log(snapshot);
+    if (prevState.img !== this.state.img) {
+      window.scrollTo({
+        top: snapshot - 180,
+        behavior: 'smooth',
+      });
+    }
+
     if (
       prevState.inputValue !== this.state.inputValue ||
       prevState.page !== this.state.page
