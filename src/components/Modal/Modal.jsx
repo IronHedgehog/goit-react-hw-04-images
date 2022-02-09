@@ -1,4 +1,4 @@
-import { createPortal } from 'react-dom/cjs/react-dom.development';
+import { createPortal } from 'react-dom';
 import { Component } from 'react/cjs/react.production.min';
 import s from './modal.module.css';
 
