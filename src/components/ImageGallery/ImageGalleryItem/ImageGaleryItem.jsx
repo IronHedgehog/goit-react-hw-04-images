@@ -1,5 +1,9 @@
-const ImageGaleryItem = () => {
-  return null;
+const ImageGalleryItem = ({ img }) => {
+  return (
+    <li className="gallery-item">
+      <img src={img.webformatURL} alt={img.tags} />
+    </li>
+  );
 };
 
-export default ImageGaleryItem;
+export default ImageGalleryItem;

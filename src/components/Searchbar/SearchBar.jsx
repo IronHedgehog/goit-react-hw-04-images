@@ -23,7 +23,11 @@ class SearchBar extends PureComponent {
     return (
       <header className="searchbar">
         <form className="form" onSubmit={onSubmitEvent}>
-          <button type="submit" className="button">
+          <button
+            disabled={this.state.inputValue.trim() === ''}
+            type="submit"
+            className="button"
+          >
             <span className="button-label">Search</span>
           </button>
 
