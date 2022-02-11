@@ -46,7 +46,7 @@ class App extends PureComponent {
       .finally(() => this.setState({ loader: false }));
   };
 
-  InputValue = inputValue => {
+  valueOfInput = inputValue => {
     this.setState({ page: 1, img: [], err: null });
     this.setState({ inputValue });
   };
@@ -67,12 +67,12 @@ class App extends PureComponent {
   };
 
   render() {
-    const { InputValue, loadButton, toggleModal, bigImgForModal } = this;
+    const { valueOfInput, loadButton, toggleModal, bigImgForModal } = this;
     const { img, loader, err, modal, bigImgUrl } = this.state;
     return (
       <>
         {modal && <Modal closeModal={toggleModal} bigImageUrl={bigImgUrl} />}
-        <SearchBar InputValue={InputValue} />
+        <SearchBar valueOfInput={valueOfInput} />
         {err ? (
           <p>{err}</p>
         ) : (
